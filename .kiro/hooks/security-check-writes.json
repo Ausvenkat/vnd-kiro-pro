@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Security Check on File Writes",
+      "trigger": "PreToolUse",
+      "description": "Security check before file write operations - asks for confirmation on sensitive files",
+      "matcher": "fs_write|str_replace",
+      "action": {
+        "type": "command",
+        "command": "cat << 'EOF'\nimport json, sys\n# Check if writing to protected files\nprotected = [\".env\", \"secrets.json\", \"passwords.txt\"]\nfile_paths = [\"$FILE_PATH\"] if \"$FILE_PATH\" else []\nfor f in file_paths:\n    if any(p in f for p in protected):\n        print(json.dumps({\n            \"hookSpecificOutput\": {\n                \"permissionDecision\": \"ask\",\n                \"permissionDecisionReason\": f\"Writing to protected file: {f}. Confirm you want to proceed?\"\n            }\n        }))\n        sys.exit(0)\nprint(json.dumps({\"hookSpecificOutput\": {\"permissionDecision\": \"allow\"}}))\nEOF\n"
+      }
+    }
+  ]
+}

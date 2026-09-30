@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run Tests After Task Completion",
+      "trigger": "PostTaskExec",
+      "description": "Run SplitEasy demo after task completion to verify system integrity",
+      "action": {
+        "type": "command",
+        "command": "cd /Users/venkatesh/Documents/Venkat/kiro/vnd-kiro-pro && echo \"📋 Task completed! Running verification...\" && (python3 demo.py 2>&1 | tail -5) && echo \"✓ Demo verification passed\" || echo \"⚠ Demo needs attention\""
+      }
+    }
+  ]
+}

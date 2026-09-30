@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Lint Python Files on Save",
+      "trigger": "PostFileSave",
+      "description": "Run Python linting (syntax check) when Python files are saved",
+      "matcher": "\\.py$",
+      "action": {
+        "type": "command",
+        "command": "python3 -m py_compile \"$FILE_PATH\" && echo \"✓ Syntax check passed\" || echo \"✗ Syntax error in $FILE_PATH\""
+      }
+    }
+  ]
+}

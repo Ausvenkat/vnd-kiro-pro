@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "SplitEasy Project Initialization",
+      "trigger": "SessionStart",
+      "description": "Initialize SplitEasy project on session start - show project status and available commands",
+      "action": {
+        "type": "command",
+        "command": "cd /Users/venkatesh/Documents/Venkat/kiro/vnd-kiro-pro && echo \"🚀 SplitEasy Project Initialized\" && echo \"✓ Project path: $(pwd)\" && echo \"✓ Python version: $(python3 --version)\" && echo \"✓ Specs available: .kiro/specs/spliteasys/\" && echo \"✓ App ready: streamlit run app.py\" && echo \"✓ Demo: python3 demo.py\" && echo \"✓ Tests: pytest tests/test_core.py -v\""
+      }
+    }
+  ]
+}
