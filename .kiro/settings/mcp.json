@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "spliteasys-database": {
+      "command": "python",
+      "args": [".kiro/mcp_servers/spliteasys_db_server.py"],
+      "disabled": false
+    },
+    "spliteasys-calculations": {
+      "command": "python",
+      "args": [".kiro/mcp_servers/spliteasys_calc_server.py"],
+      "disabled": false
+    }
+  }
+}
